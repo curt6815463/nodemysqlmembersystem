@@ -26,9 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/v1', v1);
 
 const CONFIG = require("./config/config.js")
-const models = require("./models");
+const connection = require("./models");
 
-models.authenticate()
+connection.authenticate()
   .then(() => {
       console.log('Connected to SQL database:', CONFIG.db_name);
   })
