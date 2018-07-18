@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-var CONFIG = require('./config/config.js')
+
 
 var app = express();
 
@@ -26,6 +26,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+
+const CONFIG = require("./config/config.js")
+const models = require("./models");
+
+models.authenticate()
+  .then(() => {
+      console.log('Connected to SQL database:', CONFIG.db_name);
+  })
+  .catch(err => {
+      console.error('Unable to connect to SQL database:',CONFIG.db_name, err);
+  });
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
