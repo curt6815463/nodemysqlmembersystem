@@ -17,13 +17,3 @@ const verify = function (token) {
   })
 }
 module.exports.verify = verify
-// var token = jwt.sign({ foo: 'bar' }, 'shhhhh')
-// var token = jwt.sign({ foo: 'bar', iat: Math.floor(Date.now() / 1000) - 30 }, 'shhhhh');
-
-// console.log(token)
-
-// var verifyToken = jwt.verify(token, 'shhhhh')
-// console.log(verifyToken)
-
-// var decoded = jwt.decode(token, {complete: true});
-// console.log(decoded)

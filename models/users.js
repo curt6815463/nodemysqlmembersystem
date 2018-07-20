@@ -8,15 +8,4 @@ var Users = connection.define('users', {
   tel: sequelize.STRING
 })
 
-
-// connection.sync()
-//   .then(function () {
-//     Users.create({
-//       name:'curt',
-//       account:'curt',
-//       password:'please',
-//       tel:'please'
-//     })
-//   })
-//
 module.exports = Users
