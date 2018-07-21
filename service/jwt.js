@@ -2,18 +2,11 @@ const jwt = require('jsonwebtoken')
 
 
 const sign = function (payload) {
-  return jwt.sign(payload, 'fuck')
+  return jwt.sign(payload, 'fuck',{expiresIn: 5})
 }
 module.exports.sign = sign
 
 const verify = function (token) {
-  jwt.verify(token, 'fuck', function (err, decoded) {
-    if(!err){
-      return decoded.account
-    }
-    else {
-      return err
-    }
-  })
+  return jwt.verify(token, 'fuck',{ignoreExpiration: false})
 }
 module.exports.verify = verify
