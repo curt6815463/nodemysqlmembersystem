@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "env-set":"bash ./env-set.sh",
     "start": "nodemon ./bin/www"
   },
   "dependencies": {

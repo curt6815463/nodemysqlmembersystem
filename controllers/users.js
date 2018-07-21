@@ -1,4 +1,6 @@
-const UsersModal = require('../models/users.js')
+// const UsersModal = require('../models/users.js')
+const UsersModal = require(process.cwd() + '/models/users.js')
+const jwt = require(process.cwd() + '/service/jwt')
 const {to} = require('await-to-js')
 
 const create = async function (req, res) {
@@ -9,7 +11,8 @@ const create = async function (req, res) {
 
   if (!err){
     res.statusCode = 200;
-    res.json({state:'success'})
+    let token = jwt.sign({account:req.body.account})
+    res.json({token:token})
   }
   else {
     res.statusCode = 400;
@@ -28,7 +31,8 @@ const login = async function (req, res) {
       res.json({state:'account not exist'})
     }
     else if(users.password === req.body.password){
-      res.json({state:'login success'})
+      let token = jwt.sign({account:req.body.account})
+      res.json({token:token})
     }
     else {
       res.json({state:'password not correct'})
